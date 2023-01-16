@@ -47,6 +47,9 @@ function incrementCounter() {
 // import PostList from "./components/PostList.vue";
 // import TemplateRef from "./components/TemplateRef.vue";
 // import WatcherProperties from "./components/WatcherProperties.vue";
+// COMPOSABLES
+// import useCounter from "./composables/useCounter";
+// const { count, incrementCount } = useCounter
 </script>
 
 <template>
