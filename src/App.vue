@@ -1,6 +1,6 @@
 <script setup>
 ///import { ref } from "vue";
-//import { provide, ref } from "vue";
+import { provide, ref, reactive } from "vue";
 //import ConditionalRender from "./components/ConditionalRender.vue";
 //import FormComponent from "./components/FormComponent.vue";
 //import EventComponent from "./components/EventComponent.vue";
@@ -10,9 +10,22 @@
 //const name = ref("Juanjo");
 //const company = ref("Global");
 //import ArticleComponent from "./components/ArticleComponent.vue";
-// import ComponentFather from "./components/ComponentFather.vue";
-// const username = ref("jjalonso");
-// provide("USERNAME", username.value);
+import ComponentFather from "./components/ComponentFather.vue";
+const title = ref("PROVIDE & INJECT");
+const count = ref(0);
+const dataUser = reactive({
+  name: "Juanjo",
+  company: "global",
+  count: 0,
+});
+provide("TITLE", title);
+provide("COUNTER", count);
+provide("DATA_USER", dataUser);
+provide("incrementCount", incrementCounter);
+function incrementCounter() {
+  count.value += 1;
+  dataUser.count += 1;
+}
 // import PopupComponent from "./components/PopupComponent.vue";
 // const showPopup = ref(false);
 // function closePopup(name) {
@@ -32,7 +45,8 @@
 // const tabs = [TabA, TabB, TabC];
 // import CreatePost from "./components/CreatePost.vue";
 // import PostList from "./components/PostList.vue";
-import TemplateRef from "./components/TemplateRef.vue";
+// import TemplateRef from "./components/TemplateRef.vue";
+// import WatcherProperties from "./components/WatcherProperties.vue";
 </script>
 
 <template>
@@ -100,5 +114,8 @@ import TemplateRef from "./components/TemplateRef.vue";
 
   <!-- <PostList />
   <CreatePost /> -->
-  <TemplateRef />
+  <!-- <TemplateRef />
+  <WatcherProperties /> -->
+  <ComponentFather />
+  <button @click="incrementCounter">Like</button>
 </template>
